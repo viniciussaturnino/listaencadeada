@@ -27,6 +27,16 @@ void imprime(celula *le){
   }
 }
 
+//Função recursiva para impressão da lista
+void imprime_rec(celula *le){
+  if(le->prox==NULL)
+    printf("NULL\n");
+  else{
+    printf("%d -> ",le->prox->dado);
+    imprime_rec(le->prox);
+  }
+}
+
 //Função que busca por um elemento na lista e retorna sua posição
 void busca(celula *le, int x){
   celula *p;
@@ -84,7 +94,7 @@ int main(){
     insere(le,x);
   }
   printf("\n");
-  imprime(le);
+  imprime_rec(le);
   printf("\nInforme o elemento a ser buscado na lista: ");
   scanf("%d",&x);
   busca(le,x);
@@ -93,6 +103,6 @@ int main(){
   remove_todos_elementos(le,x);
   //remove_elemento(le,x);
   printf("\n");
-  imprime(le);
+  imprime_rec(le);
   return 0;
 }
